@@ -1,0 +1,9 @@
+<div class="container">
+  <span
+    [ngClass]="{ checked }"
+    class="container__item"
+  >
+    {{ label }}
+  </span>
+  <button class="container__button" (click)="deleteItem()">Delete</button>
+</div>
