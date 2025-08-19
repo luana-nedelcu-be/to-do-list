@@ -1,0 +1,19 @@
+<form class="container" [formGroup]="itemsGroup" (ngSubmit)="addItem()">
+  <div class="container__add">
+    <input formControlName="newItem" class="container__add__input" />
+    <button type="submit" class="button">Add</button>
+  </div>
+  <div class="container__items" formArrayName="items">
+    <div class="container__items__item" *ngFor="let item of items.controls; let i = index">
+      <input type="checkbox" [formControlName]="i" />
+      <app-item
+        [label]="itemLabels[i]"
+        [checked]="items.controls[i].value"
+        (onItemDeleted)="handleItemDeleted(i)"
+      ></app-item>
+    </div>
+    <button *ngIf="resetButtonVisible" class="button" (click)="resetList()">
+      Reset list
+    </button>
+  </div>
+</form>
